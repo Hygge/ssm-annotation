@@ -47,11 +47,20 @@ public class SpringMvcConfig implements WebMvcConfigurer {
      * 4、default-servlet-handler 默认静态资源处理
      * @param configurer
      */
-    @Override
+  /*  @Override
     public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
-    }
+    }*/
 
+    /**
+     * 4、配置静态资源文件处理
+     * @param registry
+     */
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("/static/**")
+                .resourceChain(true);
+    }
 
     /**
      * 6、文件上传解析器
